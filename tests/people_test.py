@@ -6,6 +6,8 @@ def test_read_all_has_kent():
     response = requests.get(BASE_URI)
     assert_that(response.status_code).is_equal_to(requests.codes.ok)
     response_text = response.json()
+    print(response)
+    print(response_text)
     first_names = [people['fname'] for people in response_text]
     assert_that(first_names).contains('Kent')
 

@@ -2,16 +2,19 @@ import requests
 from assertpy.assertpy import assert_that
 from config import BASE_URI
 
+from faker import Faker
 from json import dumps
-from uuid import uuid4
+# from uuid import uuid4
 
 
 def create_new_person():
     """ Function to create new user. json.dumps() is used to convert python dict to json string
      uuid4.uuid4 is used to get a unique last name to ensure we don’t have conflicting data """
-    unique_last_name = f'User {str(uuid4())}'
+    f = Faker()
+    unique_first_name = f.first_name()
+    unique_last_name = f.last_name()
     payload = dumps({
-        'fname': 'New',
+        'fname': unique_first_name,
         'lname': unique_last_name
     })
     headers = {
