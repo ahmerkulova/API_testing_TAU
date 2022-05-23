@@ -2,7 +2,7 @@
 ### Stack
 - Python 3.10.2
 - pytest 7.1.2 
-- other Python packages used: requests, assertpy, json, faker
+- other Python packages used: requests, assertpy, json, Faker
 
 ### Public API used is [people-api](https://github.com/automationhacks/people-api/)
 
