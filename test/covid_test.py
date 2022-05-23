@@ -18,7 +18,7 @@ def test_covid_cases_have_crossed_a_million():
 
 
 def test_overall_covid_cases_match_sum_of_total_cases_by_country():
-    """ Test to assert XML element (found via XPath) to be <1M """
+    """ Test to assert sum of country cases (found via XPath in a loop) matches overall sum """
     response = requests.get(f'{COVID_TRACKER_HOST}/api/v1/summary/latest')
     response_xml = response.text
     xml_tree = etree.fromstring(bytes(response_xml, encoding='utf8'))
