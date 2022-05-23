@@ -9,6 +9,7 @@ pytest = "*"
 assertpy = "*"
 faker = "*"
 lxml = "*"
+jsonpath-ng = "*"
 
 [dev-packages]
 

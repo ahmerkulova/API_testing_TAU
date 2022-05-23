@@ -26,3 +26,19 @@ def test_created_person_can_be_deleted():
     delete_url = f'{BASE_URI}/{newly_created_user["person_id"]}'
     response = requests.delete(delete_url)
     assert_that(response.status_code).is_equal_to(requests.codes.ok)
+
+
+def test_person_can_be_added_with_a_json_template(create_data):
+    create_new_person(create_data)
+
+    response = requests.get(BASE_URI)
+    peoples = loads(response.text)
+
+    # Get all last names for any object in the root array
+    # Here $ = root, [*] represents any element in the array
+    # Read full syntax: https://pypi.org/project/jsonpath-ng/
+    jsonpath_expr = parse("$.[*].lname")
+    result = [match.value for match in jsonpath_expr.find(peoples)]
+
+    expected_last_name = create_data['lname']
+    assert_that(result).contains(expected_last_name)
