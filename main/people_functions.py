@@ -9,13 +9,11 @@ from uuid import uuid4
 def create_new_person():
     """ Function to create new user. json.dumps() is used to convert python dict to json string
      uuid4.uuid4 is used to get a unique last name to ensure we don’t have conflicting data """
-    print('str(uuid4())', str(uuid4()))
     unique_last_name = f'User {str(uuid4())}'
     payload = dumps({
         'fname': 'New',
         'lname': unique_last_name
     })
-    print('payload', payload)
     headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
