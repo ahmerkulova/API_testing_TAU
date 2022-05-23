@@ -1,10 +1,9 @@
 import requests
-from assertpy.assertpy import assert_that
+from assertpy.assertpy import assert_that, soft_assertions
 from config import BASE_URI
 
 from faker import Faker
 from json import dumps
-# from uuid import uuid4
 
 
 def create_new_person():
