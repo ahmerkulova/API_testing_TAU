@@ -5,9 +5,9 @@ def test_read_all_has_kent():
     """ Test to assert that one of first names in response of GET request contains 'Kent' """
     response = requests.get(BASE_URI)
     with soft_assertions():
-        assert_that(response.status_code).is_equal_to(requests.codes.ok)
+        assert_that(response.status_code, description='Person not created').is_equal_to(requests.codes.ok)
         response_text = response.json()
-        assert_that(response_text).extracting('fname').is_not_empty().contains('Kent')
+        assert_that(response_text).described_as('No matching names').extracting('fname').is_not_empty().contains('Kent')
 
 
 def test_new_person_can_be_added():
