@@ -29,16 +29,16 @@ def test_created_person_can_be_deleted():
 
 
 def test_person_can_be_added_with_a_json_template(create_data):
-    create_new_person(create_data)
+    """ Test to assert user data can be parsed from .json and user can be added """
+    create_new_person(create_data)  # get payload
 
     response = requests.get(BASE_URI)
-    peoples = loads(response.text)
+    peoples = loads(response.text)  # deserialize from json to dict
 
-    # Get all last names for any object in the root array
-    # Here $ = root, [*] represents any element in the array
-    # Read full syntax: https://pypi.org/project/jsonpath-ng/
+    """ $ = root, [*] = any element in the array (jsonpath-ng syntax)
+        Get regex to find certain key values """
     jsonpath_expr = parse("$.[*].lname")
-    result = [match.value for match in jsonpath_expr.find(peoples)]
 
+    result = [match.value for match in jsonpath_expr.find(peoples)]  # get the list with values (lnames)
     expected_last_name = create_data['lname']
     assert_that(result).contains(expected_last_name)
