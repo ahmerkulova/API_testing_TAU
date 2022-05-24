@@ -13,12 +13,13 @@ from utils.file_reader import *
 @pytest.fixture
 def create_data():
     payload = read_file('create_person.json')
-
     f = Faker()
-    last_name = f.last_name()
 
+    last_name = f'{payload["lname"]} number {f.pyint()}'
     payload['lname'] = last_name
+
     yield payload
+    print(f'data prepared: {payload["fname"]} is name, {payload["lname"]} is last name')
 
 
 def create_new_person(body=None):
