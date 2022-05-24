@@ -38,7 +38,8 @@ def test_person_can_be_added_with_a_json_template(create_data):
     """ $ = root, [*] = any element in the array (jsonpath-ng syntax)
         Get regex to find certain key values """
     jsonpath_expr = parse("$.[*].lname")
-
     result = [match.value for match in jsonpath_expr.find(peoples)]  # get the list with values (lnames)
+    """ Simpler way can be like: result = [element['lname'] for element in peoples] """
+    
     expected_last_name = create_data['lname']
     assert_that(result).contains(expected_last_name)
