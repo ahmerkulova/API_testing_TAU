@@ -6,6 +6,7 @@ from config import BASE_URI
 from faker import Faker
 from json import dumps, loads
 from jsonpath_ng import parse
+from cerberus import Validator
 
 from utils.file_reader import *
 
@@ -19,7 +20,7 @@ def create_data():
     payload['lname'] = last_name
 
     yield payload
-    print(f'data prepared: {payload["fname"]} is name, {payload["lname"]} is last name')
+    print(f'\nData prepared: {payload["fname"]} is name, {payload["lname"]} is last name')
 
 
 def create_new_person(body=None):

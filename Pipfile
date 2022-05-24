@@ -10,6 +10,7 @@ assertpy = "*"
 faker = "*"
 lxml = "*"
 jsonpath-ng = "*"
+cerberus = "*"
 
 [dev-packages]
 
