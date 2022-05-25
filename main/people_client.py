@@ -13,11 +13,11 @@ class PeopleClient(BaseClient):
         self.base_url = BASE_URI
         self.request = APIRequest()
 
-    def create_user(self, body=None):
-        last_name, response = self.__create_unique_user(body)
+    def create_person(self, body=None):
+        last_name, response = self.__create_unique_person(body)
         return last_name, response
 
-    def __create_unique_user(self, body=None):
+    def __create_unique_person(self, body=None):
         """ Private method to create new user. json.dumps() is used to convert dict to json string
         Faker is used to get a unique last name to ensure we don’t have conflicting data """
         if body is None:

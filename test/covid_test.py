@@ -31,4 +31,4 @@ def test_covid_cases_sum_by_country_matches_total():
     for region in search_for(xml_tree):
         cases_by_country += int(region.text)
 
-    assert_that(overall_cases).is_equal_to(cases_by_country)
+    assert_that(overall_cases).described_as('No matching sums').is_equal_to(cases_by_country)
