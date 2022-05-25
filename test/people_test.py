@@ -1,11 +1,4 @@
-from main.people_functions import *
-
-schema = {
-   "fname": {'type': 'string', 'required': True},
-   "lname": {'type': 'string'},
-   "person_id": {'type': 'integer'},
-   "timestamp": {'type': 'string'}
-}
+from main.people_client import *
 
 def test_read_all_has_kent():
     """ Test to assert that one of first names in response of GET request contains 'Kent' """
@@ -50,15 +43,3 @@ def test_person_can_be_added_with_a_json_template(create_data):
     expected_last_name = create_data['lname']
     assert_that(result).contains(expected_last_name)
 
-
-def test_read_one_operation_has_expected_schema():
-    """ Test to validate json schema via cerberus """
-    response = requests.get(f'{BASE_URI}')
-    people = json.loads(response.text)
-
-    validator = Validator(schema)
-
-    with soft_assertions():
-        for person in people:
-            is_valid = validator.validate(person)
-            assert_that(is_valid, description=validator.errors).is_true()
