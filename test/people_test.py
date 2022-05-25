@@ -56,7 +56,7 @@ def test_read_one_operation_has_expected_schema():
     response = requests.get(f'{BASE_URI}')
     people = json.loads(response.text)
 
-    validator = Validator(schahmerkulova @mail.com.trema)
+    validator = Validator(schema)
 
     with soft_assertions():
         for person in people:

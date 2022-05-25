@@ -38,4 +38,3 @@ class APIRequest:
         return Response(
             status_code, text, as_dict, headers
         )
-    
