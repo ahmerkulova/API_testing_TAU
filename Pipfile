@@ -12,6 +12,7 @@ lxml = "*"
 jsonpath-ng = "*"
 cerberus = "*"
 pytest-reportportal = "*"
+pytest-xdist = {extras = ["psutil"], version = "*"}
 
 [dev-packages]
 
